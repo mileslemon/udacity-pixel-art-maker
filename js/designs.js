@@ -1,10 +1,33 @@
-// Select color input
-// Select size input
+// document is ready
+// put all code in here
+$(function(){
 
-// When size is submitted by the user, call makeGrid()
+    // creates a grid using sizes inputted by the user.
+    function makeGrid() {
+        var sizePicker = $('#sizePicker');
+        var pixelCanvas = $('#pixel_canvas');
+        var gridHeight = $('#input_height').val();
+        var gridWidth = $('#input_width').val();
 
-function makeGrid() {
+        pixelCanvas.empty();
 
-// Your code goes here!
+        for (var i = 0; i < gridHeight; i++) {
+        var row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
+            for (var j = 0; j < gridWidth; j++) {
+                $('<td class="canvasCol"></td>').appendTo(row);
+            }
+        }
+    }
 
-}
+  
+
+    // calls the makeGrid function on form submission
+    // prevents the page from refreshing when submitted
+    $('#submitGrid').click( function( event ){
+        event.preventDefault();
+        makeGrid();
+    });
+
+
+});
+
