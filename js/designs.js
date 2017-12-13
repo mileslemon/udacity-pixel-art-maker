@@ -19,13 +19,27 @@ $(function(){
         }
     }
 
-  
+    function paintCanvas() {
+
+        // paints table cell with selected color on click
+        // changes cell color to background color on shift click
+        $('.canvasCol').click( function(event) {
+            var color = $('#colorPicker').val();
+            $(this).css("background-color", color);
+            if (event.ctrlKey) {
+                $(this).css("background-color", "#fff");
+            }
+        });   
+
+    }
+    
 
     // calls the makeGrid function on form submission
     // prevents the page from refreshing when submitted
     $('#submitGrid').click( function( event ){
         event.preventDefault();
         makeGrid();
+        paintCanvas();
     });
 
 
