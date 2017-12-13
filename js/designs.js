@@ -51,6 +51,7 @@ $(function(){
             }
         });
 
+        // resets the canvas
         $('#reset').click(function () {
             $('.canvasCol').css('background-color', "#fff");
         })
@@ -63,7 +64,5 @@ $(function(){
         makeGrid();
         paintCanvas();
     });
-
-    
 
 });
