@@ -22,6 +22,10 @@ td {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.toggleGrid {
+    border: none;
+}
+
 table {
     border-collapse: collapse;
     margin: 0 auto;

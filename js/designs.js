@@ -7,6 +7,9 @@ $(function () {
         var gridHeight = $('#input_height').val();
         var gridWidth = $('#input_width').val();
 
+        
+
+
         // clears any existing pixel canvas
         pixelCanvas.empty();
 
@@ -20,31 +23,60 @@ $(function () {
     }
 
     function paintCanvas() {
-        // paints table cells when mouse is down and moused over
-        // changes cell color to background color on shift hover
-
         // assumes mouse isnt clicked
         var clicked = false;
         var shiftClicked = false;
+        var currentColor = $('#colorPicker').val();
 
         // checks if mouse is clicked
         $('.canvasCol').mousedown(function (event) {
-            clicked = true;
             // prevents the user from dragging the table
             event.preventDefault();
+            clicked = true;
             // checks if shift is held while clicking
             if (event.shiftKey) {
                 clicked = false;
                 shiftClicked = true;
+                $(this).css('background-color', "#fff"); 
             }
+            
         }).mouseup(function () {
             clicked = false;
             shiftClicked = false;
+
         }).mousemove(function () {
-            // if mouse is clicked paints the cell the mouse is over
-            if(clicked){
+            var brushSize = $('#brush_Size').val();
+            var $this = $(this);
+            var cellIndex = $this.index();
+            // object containing cell locations
+            var cells = [
+                // brush 1
+                { cell : $this }, // origin point
+                // brush 2
+                { cell : $this.closest('td').next('td') }, // right
+                { cell : $this.closest('tr').next().children().eq(cellIndex) }, // bottom
+                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').next('td') }, // bottom right
+                // // brush 3
+                { cell : $this.closest('td').prev('td') }, // left
+                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').prev('td') }, // bottom left
+                { cell : $this.closest('tr').prev().children().eq(cellIndex) }, // top
+                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').next('td') }, // top right
+                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').prev('td') } // top left
+            ];
+            // if mouse is clicked and dragged, paints the cell the mouse is over
+            if(brushSize === '1' && clicked){
                 var color = $('#colorPicker').val();
-                $(this).css('background-color', color);
+                cells[0].cell.css('background-color', color);
+            } else if (brushSize === '2' && clicked) {
+                for (var i = 0; i < 4; i++) {
+                    var currentColor = $('#colorPicker').val();
+                    cells[i].cell.css('background-color', currentColor);
+                }  
+            } else if (brushSize === '3' && clicked) {
+                for (var i = 0; i < 9; i++) {
+                    var currentColor = $('#colorPicker').val();
+                    cells[i].cell.css('background-color', currentColor);
+                }
             // if shiftclicked paints the cell to the default color
             } else if (shiftClicked) {
                 $(this).css('background-color', "#fff"); 
@@ -54,7 +86,12 @@ $(function () {
         // resets the canvas
         $('#reset').click(function () {
             $('.canvasCol').css('background-color', "#fff");
-        })
+        });
+
+        // toggles grid
+        $('#toggleGrid').click(function () {
+            $('td, tr').toggleClass('toggleGrid');
+        });
     }
     
     // calls the makeGrid function on form submission
