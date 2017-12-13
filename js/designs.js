@@ -11,9 +11,9 @@ $(function(){
         // clears any existing pixel canvas
         pixelCanvas.empty();
 
-        for (var i = 0; i < gridHeight; i++) {
+        for (var r = 0; r < gridHeight; r++) {
         var row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
-            for (var j = 0; j < gridWidth; j++) {
+            for (var c = 0; c < gridWidth; c++) {
                 $('<td class="canvasCol"></td>').appendTo(row);
             }
         }
@@ -50,6 +50,10 @@ $(function(){
                 $(this).css('background-color', "#fff"); 
             }
         });
+
+        $('#reset').click(function () {
+            $('.canvasCol').css('background-color', "#fff");
+        })
     }
     
     // calls the makeGrid function on form submission
@@ -59,5 +63,7 @@ $(function(){
         makeGrid();
         paintCanvas();
     });
+
+    
 
 });
