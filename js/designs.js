@@ -1,9 +1,8 @@
 // document is ready
-$(function(){
+$(function () {
 
     // creates a grid using sizes inputted by the user.
     function makeGrid() {
-        var sizePicker = $('#sizePicker');
         var pixelCanvas = $('#pixel_canvas');
         var gridHeight = $('#input_height').val();
         var gridWidth = $('#input_width').val();
@@ -11,6 +10,7 @@ $(function(){
         // clears any existing pixel canvas
         pixelCanvas.empty();
 
+        // creates the table grid
         for (var r = 0; r < gridHeight; r++) {
         var row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
             for (var c = 0; c < gridWidth; c++) {
@@ -59,7 +59,7 @@ $(function(){
     
     // calls the makeGrid function on form submission
     // prevents the page from refreshing when submitted
-    $('#submitGrid').click( function( event ){
+    $('#submitGrid').click(function (event) {
         event.preventDefault();
         makeGrid();
         paintCanvas();
