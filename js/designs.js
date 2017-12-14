@@ -37,7 +37,7 @@ $(function () {
             if (event.shiftKey) {
                 clicked = false;
                 shiftClicked = true;
-                $(this).css('background-color', "#fff"); 
+                $(this).css('background-color', "#1b1014"); 
             }
             
         }).mouseup(function () {
@@ -48,6 +48,7 @@ $(function () {
             var brushSize = $('#brush_Size').val();
             var $this = $(this);
             var cellIndex = $this.index();
+            
             // object containing cell locations
             var cells = [
                 // brush 1
@@ -63,6 +64,12 @@ $(function () {
                 { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').next('td') }, // top right
                 { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').prev('td') } // top left
             ];
+
+            // prevents painting if mouse is released off canvas
+            $('body').mouseup(function (){
+                clicked = false;
+            })
+
             // if mouse is clicked and dragged, paints the cell the mouse is over
             if(brushSize === '1' && clicked){
                 var color = $('#colorPicker').val();
@@ -79,21 +86,21 @@ $(function () {
                 }
             // if shiftclicked paints the cell to the default color
             } else if (shiftClicked) {
-                $(this).css('background-color', "#fff"); 
+                $(this).css('background-color', "#1b1014"); 
             }
-        });
-
-        // resets the canvas
-        $('#reset').click(function () {
-            $('.canvasCol').css('background-color', "#fff");
-        });
-
-        // toggles grid
-        $('#toggleGrid').click(function () {
-            $('td, tr').toggleClass('toggleGrid');
         });
     }
     
+    // resets the canvas
+    $('#reset').click(function () {
+        $('.canvasCol').css('background-color', "#1b1014");
+    });
+
+    // toggles grid
+    $('#toggleGrid').click(function () {
+        $('tr, td').toggleClass('toggleGrid');
+    });
+
     // calls the makeGrid function on form submission
     // prevents the page from refreshing when submitted
     $('#submitGrid').click(function (event) {

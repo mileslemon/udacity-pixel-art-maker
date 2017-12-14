@@ -1,29 +1,46 @@
-body {
-    text-align: center;
+@font-face {
+    font-family: FFMarkMedium;
+    src: url('../fonts/FF-Mark-Pro-Medium.otf')
 }
 
-h1 {
-    font-family: Monoton;
-    font-size: 70px;
-    margin: 0.2em;
+@font-face {
+    font-family: FFMarkRegular;
+    src: url('../fonts/FF-Mark-Pro-Book.otf')
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1b1014;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    background-color: #131317;
+}
+
+.main-header img {
+    width: 1000px;
+    padding: 20px;
 }
 
 h2 {
-    margin: 1em 0 0.25em;
-}
-
-h2:first-of-type {
-    margin-top: 0.5em;
+    font-family: FFMarkRegular, serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #ec1e59;
 }
 
 table,
 tr,
 td {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.toggleGrid {
-    border: none;
+    border: 1px solid rgba(236, 30, 89, 0.2);
 }
 
 table {
@@ -39,13 +56,17 @@ td {
     width: 20px;
 }
 
+.toggleGrid {
+    border: none;
+}
+
 input[type=number] {
     width: 6em;
 }
 
 input[type=color] {
     width: 100px;
-    height: 400px;
+    height: 100px;
     padding: 0;
     border: 0;
 }
