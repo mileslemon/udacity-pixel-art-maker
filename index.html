@@ -10,25 +10,38 @@
         <img src="media/logo.png" alt="Pixel Maker Logo">
     </header>
 
-    <h2>CREATE GRID CANVAS</h2>
-    <form id="sizePicker">
-        Grid Height:
-        <input type="number" id="input_height" name="height" min="1" value="16">
-        Grid Width:
-        <input type="number" id="input_width" name="width" min="1" value="16">
-        <button id="reset" type="button">Reset</button>
-        <input id="submitGrid" type="submit" value="Create Canvas!"> <br /> <br />
-        Brush Size:
-        <input type="number" id="brush_Size" name="brush" min="1" max="3" value="1">
-        <button id="toggleGrid" type="button">Toggle Grid</button>
-    </form>
+    <div class="content-wrapper">
+        <div class="controls-wrapper">
+            <h2>CREATE GRID CANVAS</h2>
+            <form id="sizePicker">
+                <div class="grid-controls">
+                    <p>Grid Height:</p>
+                    <input type="number" id="input_height" name="height" min="1" value="16">
+                    <p>Grid Width:</p>
+                    <input type="number" id="input_width" name="width" min="1" value="16">
+                    <input id="submitGrid" type="submit" value="Create Canvas!"> <br /> <br />
+                </div>
 
-    <h2>Pick A Color</h2>
-    <input type="color" id="colorPicker">
+                <div class="paint-controls">
+                <p>Brush Size:</p>
+                    <input type="number" id="brush_Size" name="brush" min="1" max="3" value="1">
+                    <button id="toggleGrid" type="button">Toggle Grid</button>
+                    <button id="reset" type="button">Reset</button>
+                    <h2>Pick A Color</h2>
+                    <input type="color" id="colorPicker">
+                </div>
+            </form>
 
-    <h2>CREATE GRID CAN</h2>
-    <table id="pixel_canvas"></table>
+        </div>
 
+        <div class="canvas-wrapper">
+            <table id="pixel_canvas"></table>
+        </div>
+    </div>
+
+    <!-- 
+    // JavaScript
+    -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

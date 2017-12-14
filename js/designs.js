@@ -39,6 +39,28 @@ $(function () {
                 shiftClicked = true;
                 $(this).css('background-color', "#1b1014"); 
             }
+
+            // eye dropper tool
+            if (event.ctrlKey) {
+                var hexColor = '';
+                // retrieves rgb color value of cell background
+                var rgbColor = $(this).css('background-color');
+                hexify(rgbColor);
+
+                // converts the retrieved rgb color value to a hexidecimal value
+                function hexify(color) {
+                    var parts = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                    delete(parts[0]);
+                    for (var i = 1; i <= 3; ++i) {
+                        parts[i] = parseInt(parts[i]).toString(16);
+                        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+                    }
+                    hexColor = '#' + parts.join('');
+                    return hexColor;
+                }
+                // sets color input value to returned hexidecimal color value
+                $('#colorPicker').val(hexColor);
+            }
             
         }).mouseup(function () {
             clicked = false;
@@ -72,16 +94,16 @@ $(function () {
 
             // if mouse is clicked and dragged, paints the cell the mouse is over
             if(brushSize === '1' && clicked){
-                var color = $('#colorPicker').val();
-                cells[0].cell.css('background-color', color);
+                currentColor = $('#colorPicker').val();
+                cells[0].cell.css('background-color', currentColor);
             } else if (brushSize === '2' && clicked) {
                 for (var i = 0; i < 4; i++) {
-                    var currentColor = $('#colorPicker').val();
+                    currentColor = $('#colorPicker').val();
                     cells[i].cell.css('background-color', currentColor);
                 }  
             } else if (brushSize === '3' && clicked) {
                 for (var i = 0; i < 9; i++) {
-                    var currentColor = $('#colorPicker').val();
+                    currentColor = $('#colorPicker').val();
                     cells[i].cell.css('background-color', currentColor);
                 }
             // if shiftclicked paints the cell to the default color

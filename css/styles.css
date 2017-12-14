@@ -30,11 +30,29 @@ body {
     padding: 20px;
 }
 
+.content-wrapper {
+    display: flex;
+    min-height: calc(100vh - 108.867px);
+}
+
+.controls-wrapper {
+    min-height: 100%;
+    width: 400px;
+}
+
 h2 {
     font-family: FFMarkRegular, serif;
     font-size: 24px;
     font-weight: normal;
     color: #ec1e59;
+}
+
+.canvas-wrapper {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 table,
@@ -54,6 +72,10 @@ tr {
 
 td {
     width: 20px;
+}
+
+.canvasCol {
+    background-color: #1b1014;
 }
 
 .toggleGrid {
