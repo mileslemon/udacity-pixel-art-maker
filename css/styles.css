@@ -42,3 +42,10 @@ td {
 input[type=number] {
     width: 6em;
 }
+
+input[type=color] {
+    width: 100px;
+    height: 400px;
+    padding: 0;
+    border: 0;
+}
