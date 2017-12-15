@@ -89,6 +89,10 @@ select {
     width: 100%;
 }
 
+#backgroundPicker {
+    margin-bottom: 15px;
+}
+
 input[type=submit],
 button {
     border: 1px solid #ec1e59;
