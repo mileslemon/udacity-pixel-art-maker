@@ -3,6 +3,7 @@ $(function () {
 
     // changes the color inputs default value
     $('#colorPicker').val('#00ff9d');
+    $('#backgroundPicker').val('#1b1014');
 
     // creates a grid using sizes inputted by the user.
     function makeGrid() {
@@ -20,6 +21,10 @@ $(function () {
                 $('<td class="canvasCol"></td>').appendTo(row);
             }
         }
+
+        // sets the background color of the canvas
+        $('.canvasCol').css('background-color', $('#backgroundPicker').val())
+
     }
 
     function paintCanvas() {
@@ -37,7 +42,7 @@ $(function () {
             if (event.shiftKey) {
                 clicked = false;
                 shiftClicked = true;
-                $(this).css('background-color', "#1b1014"); 
+                $(this).css('background-color', $('#backgroundPicker').val()); 
             }
             // eye dropper tool
             if (event.ctrlKey) {
@@ -107,7 +112,7 @@ $(function () {
                 }
             // if shiftclicked paints the cell to the default color
             } else if (shiftClicked) {
-                $(this).css('background-color', "#1b1014"); 
+                $(this).css('background-color', $('#backgroundPicker').val()); 
             }
         });
     }
