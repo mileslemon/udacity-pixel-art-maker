@@ -119,7 +119,7 @@ $(function () {
     
     // resets the canvas
     $('#reset').click(function () {
-        $('.canvasCol').css('background-color', "#1b1014");
+        $('.canvasCol').css('background-color', $('#backgroundPicker').val());
     });
 
     // toggles grid
