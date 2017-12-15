@@ -47,8 +47,7 @@ body {
 }
 
 .grid-controls,
-.paint-controls {
-    /* border-top: 5px solid #ec1e59; */
+.paint-controls {   
     padding-top: 10px;
 }
 
@@ -112,7 +111,7 @@ button:hover {
 
 .paint-controls,
 .controls-list {
-    margin-top:30px;
+    margin-top:20px;
 }
 
 .grid-buttons {
