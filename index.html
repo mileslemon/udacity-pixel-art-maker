@@ -12,25 +12,38 @@
 
     <div class="content-wrapper">
         <div class="controls-wrapper">
-            <h2>CREATE GRID CANVAS</h2>
             <form id="sizePicker">
                 <div class="grid-controls">
-                    <p>Grid Height:</p>
-                    <input type="number" id="input_height" name="height" min="1" value="16">
-                    <p>Grid Width:</p>
-                    <input type="number" id="input_width" name="width" min="1" value="16">
-                    <input id="submitGrid" type="submit" value="Create Canvas!"> <br /> <br />
+                    <h2>CREATE GRID CANVAS</h2>
+                    <p>GRID HEIGHT:</p>
+                    <input type="number" id="input_height" name="height" min="1" value="32"> <br />
+                    <p>GRID WIDTH:</p>
+                    <input type="number" id="input_width" name="width" min="1" value="32"><br />
+                    <input id="submitGrid" type="submit" value="INITIALIZE GRID">
                 </div>
 
                 <div class="paint-controls">
-                <p>Brush Size:</p>
+                    <h2>PAINT CONTROLS</h2>
+                    <p>BRUSH SIZE:</p>
                     <input type="number" id="brush_Size" name="brush" min="1" max="3" value="1">
-                    <button id="toggleGrid" type="button">Toggle Grid</button>
-                    <button id="reset" type="button">Reset</button>
-                    <h2>Pick A Color</h2>
+                    <div class="grid-buttons">
+                        <button id="toggleGrid" type="button">TOGGLE GRID</button>
+                        <button id="reset" type="button">RESET GRID</button><br />
+                    </div>
+                    <p>COLOR PICKER:</p>
                     <input type="color" id="colorPicker">
                 </div>
             </form>
+
+            <div class="controls-list">
+                <h2>CONTROLS</h2>
+                <p>CLICK AND DRAG TO PAINT</p>
+                <p>THREE BRUSH SIZES</p>
+                <br />
+                <p>PAINT : <span>LEFT-CLICK</span></p>
+                <p>ERASE : <span>SHIFT + LEFT-CLICK</span></p>
+                <p>EYEDROPPER : <span>CTRL + LEFT-CLICK</span></p>
+            </div>
 
         </div>
 

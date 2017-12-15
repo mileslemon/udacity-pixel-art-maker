@@ -1,14 +1,14 @@
 // document is ready
 $(function () {
 
+    // changes the color inputs default value
+    $('#colorPicker').val('#00ff9d');
+
     // creates a grid using sizes inputted by the user.
     function makeGrid() {
         var pixelCanvas = $('#pixel_canvas');
         var gridHeight = $('#input_height').val();
         var gridWidth = $('#input_width').val();
-
-        
-
 
         // clears any existing pixel canvas
         pixelCanvas.empty();
@@ -39,7 +39,6 @@ $(function () {
                 shiftClicked = true;
                 $(this).css('background-color', "#1b1014"); 
             }
-
             // eye dropper tool
             if (event.ctrlKey) {
                 var hexColor = '';

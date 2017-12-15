@@ -12,6 +12,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: FFMarkRegular, serif;
+    font-size: 12px;
 }
 
 body {
@@ -23,29 +25,113 @@ body {
 
 .main-header {
     background-color: #131317;
+    border-bottom: 1px solid #000;
 }
 
 .main-header img {
-    width: 1000px;
-    padding: 20px;
+    width: 600px;
+    padding: 15px;
 }
 
 .content-wrapper {
     display: flex;
-    min-height: calc(100vh - 108.867px);
+    min-height: calc(100vh - 74.7167px);
 }
 
 .controls-wrapper {
+    padding:15px;
     min-height: 100%;
-    width: 400px;
+    width: 350px;
+    background-color: #131317;
+    border-right: 1px solid #000;
+}
+
+.grid-controls,
+.paint-controls {
+    /* border-top: 5px solid #ec1e59; */
+    padding-top: 10px;
 }
 
 h2 {
-    font-family: FFMarkRegular, serif;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: normal;
     color: #ec1e59;
+    margin-bottom: 10px;
 }
+
+p{
+    color: #ec1e59;
+    margin-bottom: 5px;
+}
+
+span {
+    color: #795e66;
+}
+
+input[type=text],
+input[type=number],
+input[type=submit],
+button {
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    background-color: #2b101a;
+    color: #ec1e59;
+    margin-bottom: 10px;
+}
+
+input[type=text],
+input[type=number],
+input[type=submit] {
+    width: 100%;
+}
+
+input[type=submit],
+button {
+    border: 1px solid #ec1e59;
+
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+input[type=submit]:hover,
+button:hover {
+    cursor: pointer;
+    background-color: #ec1e59;
+    color: #2b101a;
+}
+
+.paint-controls,
+.controls-list {
+    margin-top:30px;
+}
+
+.grid-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.grid-buttons button {
+    flex-grow: 1;
+    width: 50%;
+    margin-right: 5px;
+}
+
+.grid-buttons button:nth-child(2n) {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+input[type=color] {
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    border: 0;
+}
+
 
 .canvas-wrapper {
     min-height: 100%;
@@ -53,6 +139,7 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top:35px;
 }
 
 table,
@@ -80,15 +167,4 @@ td {
 
 .toggleGrid {
     border: none;
-}
-
-input[type=number] {
-    width: 6em;
-}
-
-input[type=color] {
-    width: 100px;
-    height: 100px;
-    padding: 0;
-    border: 0;
 }
