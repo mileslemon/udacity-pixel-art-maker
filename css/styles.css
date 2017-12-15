@@ -71,10 +71,12 @@ span {
 input[type=text],
 input[type=number],
 input[type=submit],
-button {
+button,
+select {
     text-align: center;
     padding: 5px;
     border: 0;
+    border-radius: 0;
     background-color: #2b101a;
     color: #ec1e59;
     margin-bottom: 10px;
@@ -82,7 +84,8 @@ button {
 
 input[type=text],
 input[type=number],
-input[type=submit] {
+input[type=submit],
+select {
     width: 100%;
 }
 
