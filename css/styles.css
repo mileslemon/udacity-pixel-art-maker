@@ -135,6 +135,10 @@ input[type=color] {
     margin-bottom: 10px;
 }
 
+input[type=color]:hover {
+    cursor: pointer;
+}
+
 .canvas-wrapper {
     min-height: 100%;
     display: flex;
@@ -155,6 +159,10 @@ table {
     margin: 0 auto;
 }
 
+/* table:hover {
+    cursor: defaul;
+} */
+
 tr {
     height: 20px;
 }
@@ -169,4 +177,8 @@ td {
 
 .toggleGrid {
     border: none;
+}
+
+.eyedropper {
+    cursor: crosshair;
 }
