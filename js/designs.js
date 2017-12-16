@@ -4,21 +4,21 @@ $(function () {
     // changes the color inputs default value
     $('#colorPicker').val('#00ff9d');
     $('#backgroundPicker').val('#1b1014');
-    var currentBackground;
+    let currentBackground;
 
     // creates a grid using sizes inputted by the user.
     function makeGrid() {
-        var pixelCanvas = $('#pixel_canvas');
-        var gridHeight = $('#input_height').val();
-        var gridWidth = $('#input_width').val();
+        const pixelCanvas = $('#pixel_canvas');
+        const gridHeight = $('#input_height').val();
+        const gridWidth = $('#input_width').val();
 
         // clears any existing pixel canvas
         pixelCanvas.empty();
 
         // creates the table grid
-        for (var r = 0; r < gridHeight; r++) {
-        var row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
-            for (var c = 0; c < gridWidth; c++) {
+        for (let r = 0; r < gridHeight; r++) {
+        let row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
+            for (let c = 0; c < gridWidth; c++) {
                 $('<td class="canvasCol"></td>').appendTo(row);
             }
         }
@@ -30,21 +30,22 @@ $(function () {
 
     function paintCanvas() {
         // assumes mouse isnt clicked
-        var clicked = false;
-        var shiftClicked = false;
-        var currentColor = $('#colorPicker').val();
+        let clicked = false;
+        let shiftClicked = false;
+        let currentColor = $('#colorPicker').val();
 
         // checks if mouse is clicked
         $('.canvasCol').mousedown(function (event) {
             // prevents the user from dragging the table
             event.preventDefault();
             clicked = true;
-            var brushSize = $('#brush_Size').val();
-            var $this = $(this);
-            var cellIndex = $this.index();
+
+            const brushSize = $('#brush_Size').val();
+            const $this = $(this);
+            const cellIndex = $this.index();
             
             // object containing cell locations
-            var currentCells = [
+            const currentCells = [
                 // brush 1
                 { cell : $this }, // origin point
                 // brush 2
@@ -65,18 +66,19 @@ $(function () {
                 shiftClicked = true;
             }
 
-            // eye dropper tool
+            // eyedropper tool
             if (event.ctrlKey || event.metaKey) {
-                var hexColor = '';
+                clicked = false;
+                let hexColor = '';
                 // retrieves rgb color value of cell background
-                var rgbColor = $(this).css('background-color');
+                const rgbColor = $(this).css('background-color');
                 hexify(rgbColor);
 
                 // converts the retrieved rgb color value to a hexidecimal value
                 function hexify(color) {
-                    var parts = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                    const parts = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
                     delete(parts[0]);
-                    for (var i = 1; i <= 3; ++i) {
+                    for (let i = 1; i <= 3; ++i) {
                         parts[i] = parseInt(parts[i]).toString(16);
                         if (parts[i].length == 1) parts[i] = '0' + parts[i];
                     }
@@ -87,28 +89,15 @@ $(function () {
                 $('#colorPicker').val(hexColor);
             }
 
-            if(brushSize === '1' && clicked){
-                currentColor = $('#colorPicker').val();
-                currentCells[0].cell.css('background-color', currentColor);
-            } else if (brushSize === '2' && clicked) {
-                for (var i = 0; i < 4; i++) {
-                    currentColor = $('#colorPicker').val();
-                    currentCells[i].cell.css('background-color', currentColor);
-                }  
-            } else if (brushSize === '3' && clicked) {
-                for (var i = 0; i < 9; i++) {
-                    currentColor = $('#colorPicker').val();
-                    currentCells[i].cell.css('background-color', currentColor);
+            // paints on click, scales according to selected brush size
+            if (clicked) {
+                for (let i = 0; i < Math.pow(brushSize, 2); i++) {
+                  currentColor = $('#colorPicker').val();
+                  currentCells[i].cell.css('background-color', currentColor);
                 }
-            // if shiftclicked paints the cell to the default color
-            } else if (brushSize === '1' && shiftClicked) {
-                $(this).css('background-color', currentBackground); 
-            } else if (brushSize === '2' && shiftClicked) {
-                for (var i = 0; i < 4; i++) {
-                    currentCells[i].cell.css('background-color', currentBackground);
-                }  
-            } else if (brushSize === '3' && shiftClicked) {
-                for (var i = 0; i < 9; i++) {
+            // if shift is held, will erase instead, also scales with brush size
+            } else if (shiftClicked) {
+                for (let i = 0; i < Math.pow(brushSize, 2); i++) {
                     currentCells[i].cell.css('background-color', currentBackground);
                 }
             }
@@ -118,12 +107,12 @@ $(function () {
             shiftClicked = false;
 
         }).mousemove(function () {
-            var brushSize = $('#brush_Size').val();
-            var $this = $(this);
-            var cellIndex = $this.index();
+            const brushSize = $('#brush_Size').val();
+            const $this = $(this);
+            const cellIndex = $this.index();
             
             // object containing cell locations
-            var currentCells = [
+            const currentCells = [
                 // brush 1
                 { cell : $this }, // origin point
                 // brush 2
@@ -143,29 +132,15 @@ $(function () {
                 clicked = false;
             })
 
-            // if mouse is clicked and dragged, paints the cell the mouse is over
-            if(brushSize === '1' && clicked){
-                currentColor = $('#colorPicker').val();
-                currentCells[0].cell.css('background-color', currentColor);
-            } else if (brushSize === '2' && clicked) {
-                for (var i = 0; i < 4; i++) {
-                    currentColor = $('#colorPicker').val();
-                    currentCells[i].cell.css('background-color', currentColor);
-                }  
-            } else if (brushSize === '3' && clicked) {
-                for (var i = 0; i < 9; i++) {
-                    currentColor = $('#colorPicker').val();
-                    currentCells[i].cell.css('background-color', currentColor);
+            // paints on click, scales according to selected brush size
+            if (clicked) {
+                for (let i = 0; i < Math.pow(brushSize, 2); i++) {
+                  currentColor = $('#colorPicker').val();
+                  currentCells[i].cell.css('background-color', currentColor);
                 }
-            // if shiftclicked paints the cell to the default color
-            } else if (brushSize === '1' && shiftClicked) {
-                $(this).css('background-color', currentBackground); 
-            } else if (brushSize === '2' && shiftClicked) {
-                for (var i = 0; i < 4; i++) {
-                    currentCells[i].cell.css('background-color', currentBackground);
-                }  
-            } else if (brushSize === '3' && shiftClicked) {
-                for (var i = 0; i < 9; i++) {
+            // if shift is held, will erase instead. also scales with brush size
+            } else if (shiftClicked) {
+                for (let i = 0; i < Math.pow(brushSize, 2); i++) {
                     currentCells[i].cell.css('background-color', currentBackground);
                 }
             }
