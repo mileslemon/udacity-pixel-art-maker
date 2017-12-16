@@ -101,8 +101,16 @@ $(function () {
                     currentCells[i].cell.css('background-color', currentColor);
                 }
             // if shiftclicked paints the cell to the default color
-            } else if (shiftClicked) {
+            } else if (brushSize === '1' && shiftClicked) {
                 $(this).css('background-color', currentBackground); 
+            } else if (brushSize === '2' && shiftClicked) {
+                for (var i = 0; i < 4; i++) {
+                    currentCells[i].cell.css('background-color', currentBackground);
+                }  
+            } else if (brushSize === '3' && shiftClicked) {
+                for (var i = 0; i < 9; i++) {
+                    currentCells[i].cell.css('background-color', currentBackground);
+                }
             }
             
         }).mouseup(function () {
@@ -150,8 +158,16 @@ $(function () {
                     currentCells[i].cell.css('background-color', currentColor);
                 }
             // if shiftclicked paints the cell to the default color
-            } else if (shiftClicked) {
+            } else if (brushSize === '1' && shiftClicked) {
                 $(this).css('background-color', currentBackground); 
+            } else if (brushSize === '2' && shiftClicked) {
+                for (var i = 0; i < 4; i++) {
+                    currentCells[i].cell.css('background-color', currentBackground);
+                }  
+            } else if (brushSize === '3' && shiftClicked) {
+                for (var i = 0; i < 9; i++) {
+                    currentCells[i].cell.css('background-color', currentBackground);
+                }
             }
         });
     }
