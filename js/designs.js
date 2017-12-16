@@ -11,10 +11,8 @@ $(function () {
         const pixelCanvas = $('#pixel_canvas');
         const gridHeight = $('#input_height').val();
         const gridWidth = $('#input_width').val();
-
         // clears any existing pixel canvas
         pixelCanvas.empty();
-
         // creates the table grid
         for (let r = 0; r < gridHeight; r++) {
         let row = $('<tr class="canvasRow"></tr>').appendTo(pixelCanvas);
