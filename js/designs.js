@@ -66,7 +66,7 @@ $(function () {
             }
 
             // eye dropper tool
-            if (event.ctrlKey) {
+            if (event.ctrlKey || event.metaKey) {
                 var hexColor = '';
                 // retrieves rgb color value of cell background
                 var rgbColor = $(this).css('background-color');
