@@ -26,11 +26,25 @@ $(function () {
         currentBackground = $('#backgroundPicker').val();
     }
 
+
+    
+
     function paintCanvas() {
         // assumes mouse isnt clicked
         let clicked = false;
         let shiftClicked = false;
         let currentColor = $('#colorPicker').val();
+
+        // checks if the ctrl is held and changes the cursor style
+        $(document).keydown(function (event) {
+            if (event.which === 17) {
+                $('table').css('cursor', 'crosshair');
+            }
+        }).keyup( function (event) {
+            if (event.which === 17) {
+                $('table').css('cursor', 'default');
+            }
+        });
 
         // checks if mouse is clicked
         $('.canvasCol').mousedown(function (event) {
