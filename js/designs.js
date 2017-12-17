@@ -26,9 +26,6 @@ $(function () {
         currentBackground = $('#backgroundPicker').val();
     }
 
-
-    
-
     function paintCanvas() {
         // assumes mouse isnt clicked
         let clicked = false;
