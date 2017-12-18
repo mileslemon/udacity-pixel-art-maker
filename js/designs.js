@@ -26,6 +26,26 @@ $(function () {
         currentBackground = $('#backgroundPicker').val();
     }
 
+    // Creates an object of cells in relation to location within the table the user has clicked.
+    let currentCells = [];
+    function createCurrentCells (inst, ind) {
+        currentCells = [
+            // brush 1
+            { cell : inst }, // origin point
+            // brush 2
+            { cell : inst.closest('td').next('td') }, // right
+            { cell : inst.closest('tr').next().children().eq(ind) }, // bottom
+            { cell : inst.closest('tr').next().children().eq(ind).closest('td').next('td') }, // bottom right
+            // // brush 3
+            { cell : inst.closest('td').prev('td') }, // left
+            { cell : inst.closest('tr').next().children().eq(ind).closest('td').prev('td') }, // bottom left
+            { cell : inst.closest('tr').prev().children().eq(ind) }, // top
+            { cell : inst.closest('tr').prev().children().eq(ind).closest('td').next('td') }, // top right
+            { cell : inst.closest('tr').prev().children().eq(ind).closest('td').prev('td') } // top left
+        ];
+        return currentCells;
+    }
+
     function paintCanvas() {
         // assumes mouse isnt clicked
         let clicked = false;
@@ -53,21 +73,8 @@ $(function () {
             const $this = $(this);
             const cellIndex = $this.index();
             
-            // object containing cell locations
-            const currentCells = [
-                // brush 1
-                { cell : $this }, // origin point
-                // brush 2
-                { cell : $this.closest('td').next('td') }, // right
-                { cell : $this.closest('tr').next().children().eq(cellIndex) }, // bottom
-                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').next('td') }, // bottom right
-                // // brush 3
-                { cell : $this.closest('td').prev('td') }, // left
-                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').prev('td') }, // bottom left
-                { cell : $this.closest('tr').prev().children().eq(cellIndex) }, // top
-                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').next('td') }, // top right
-                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').prev('td') } // top left
-            ];
+            // calls function that creates an object of cell locations
+            createCurrentCells($this, cellIndex);
 
             // checks if shift is held while clicking
             if (event.shiftKey) {
@@ -120,21 +127,8 @@ $(function () {
             const $this = $(this);
             const cellIndex = $this.index();
             
-            // object containing cell locations
-            const currentCells = [
-                // brush 1
-                { cell : $this }, // origin point
-                // brush 2
-                { cell : $this.closest('td').next('td') }, // right
-                { cell : $this.closest('tr').next().children().eq(cellIndex) }, // bottom
-                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').next('td') }, // bottom right
-                // // brush 3
-                { cell : $this.closest('td').prev('td') }, // left
-                { cell : $this.closest('tr').next().children().eq(cellIndex).closest('td').prev('td') }, // bottom left
-                { cell : $this.closest('tr').prev().children().eq(cellIndex) }, // top
-                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').next('td') }, // top right
-                { cell : $this.closest('tr').prev().children().eq(cellIndex).closest('td').prev('td') } // top left
-            ];
+            // calls function that creates an object of cell locations
+            createCurrentCells($this, cellIndex);
 
             // prevents painting if mouse is released off canvas
             $('body').mouseup(function (){
