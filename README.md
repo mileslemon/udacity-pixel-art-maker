@@ -6,7 +6,7 @@ This is the final project for the first phase of the Udacity Google Front-End We
 
 As this was the final project of the first phase, I wanted to push myself and decided to implement additional features that I felt were missing from the initial required outcome.
 
-###### <a href="https://mileslemon.github.io/Udacity-Pixel-Maker/">Preview the project</a>
+###### <a href="https://mileslemon.github.io/Udacity-Pixel-Art-Maker/">Preview the project</a>
 
 ---
 
