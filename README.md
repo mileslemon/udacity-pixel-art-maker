@@ -6,7 +6,7 @@ This is the final project for the first phase of the Udacity Google Front-End We
 
 As this was the final project of the first phase, I wanted to push myself and decided to implement additional features that I felt were missing from the initial required outcome.
 
-###### <a href="https://mileslemon.github.io/Udacity-Pixel-Maker/">Preview the project</a>
+###### <a href="https://mileslemon.github.io/Udacity-Pixel-Art-Maker/">Preview the project</a>
 
 ---
 
@@ -51,6 +51,8 @@ As this was the final project of the first phase, I wanted to push myself and de
 - Replaced all instances of the keyword var with let or const
 - Painting can now be done with both left-click and right-click without bringing up the context menu
 - Replaced the original painting mechanic with the more optimized method that <a href="https://github.com/NickBellamy">@NickBellamy</a> suggested.
+- Removed repeated object for cell location in relation to user click location and replaced it with a function.
+- Cursor will now indicate the area in which the user will paint.
 
 --- 
 
