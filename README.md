@@ -52,6 +52,7 @@ As this was the final project of the first phase, I wanted to push myself and de
 - Painting can now be done with both left-click and right-click without bringing up the context menu
 - Replaced the original painting mechanic with the more optimized method that <a href="https://github.com/NickBellamy">@NickBellamy</a> suggested.
 - Removed repeated object for cell location in relation to user click location and replaced it with a function.
+- Cursor will now indicate the area in which the user will paint.
 
 --- 
 
