@@ -50,16 +50,19 @@ $(function () {
         // assumes mouse isnt clicked
         let clicked = false;
         let shiftClicked = false;
+        let ctrlClicked = false;
         let currentColor = $('#colorPicker').val();
 
         // checks if ctrl is held and changes the cursor
         $(document).keydown(function (event) {
             if (event.which === 17) {
                 $('table').css('cursor', 'crosshair');
+                ctrlClicked = true;
             }
         }).keyup( function (event) {
             if (event.which === 17) {
                 $('table').css('cursor', 'default');
+                ctrlClicked = false;
             }
         });
 
@@ -155,9 +158,10 @@ $(function () {
             // calls function that creates an object of cell locations
             createCurrentCells($this, cellIndex);
 
-            for (let i = 0; i < Math.pow(brushSize, 2); i++) {
-                currentCells[i].cell.css('opacity', '0.5',);
-                //currentCells[i].cell.css('opacity', '0.5');
+            if (!ctrlClicked) {
+                for (let i = 0; i < Math.pow(brushSize, 2); i++) {
+                    currentCells[i].cell.css('opacity', '0.5',);
+                }
             }
 
         }).mouseleave(function () {
